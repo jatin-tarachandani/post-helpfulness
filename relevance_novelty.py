@@ -111,7 +111,7 @@ def run(model_name):
     tokenizer = preprocessing.text.Tokenizer(num_words=constants.VOCABULARY_SIZE)
     tokenizer.fit_on_texts(list(data.postText.values.astype(str)))
     (word_index, embedding_matrix) = utilities.load_embedding(tokenizer, \
-      '../mentalHealth/glove.6B.100d.txt', constants.DATA_DIM)
+      constants.WORD_EMBEDDING_FILE, constants.DATA_DIM)
 
     x = get_sequences(tokenizer, data, constants.MAX_LEN, 'postText')
     x_op = get_sequences(tokenizer, data, constants.MAX_LEN, 'OPost')
