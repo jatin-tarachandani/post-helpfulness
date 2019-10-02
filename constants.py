@@ -8,4 +8,5 @@ MAX_LEN = 30
 MAX_CONTEXT_LENGTH = 20
 TEST_SIZE = 0.1
 POSTS_FILE = 'data/<your_csv_file>'
+WORD_EMBEDDING_FILE = 'path_to_glove_embedding_file'
 SEED = 7
