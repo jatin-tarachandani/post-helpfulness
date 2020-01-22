@@ -29,7 +29,7 @@ Once you have extracted the `.zip` file, use the full path of the embedding file
 * `postText`: Textual content of the target post to be classified.
 * `OPost`: Textual content of the original post in the same thread as that of the target post.
 * `helpfulCount`: A binary value (0 or 1) depicting the two classes (non-helpful and helpful respectively).
-* `context_[0-19]`: 20 separate columns each with a contextual post from the same thread as that of the target post. Note that the `20th` column would always be the penultimate post in the same thread. As for example, if the targest post is the `5th` in the thread, then `context_14` would be the first post in the thread, `context-15` the second, similarly `context_19` would be the fourth (and thus penultimate) in the thread. Other columns (`context_[0-13]`) would be left empty.
+* `context_[0-19]`: 20 separate columns each with a contextual post from the same thread as that of the target post. Note that the `19th` (`context_19`) column would always be the penultimate post in the same thread. As for example, if the target post is the `5th` in the thread, then `context_14` would be the first post in the thread, `context-15` the second, similarly `context_19` would be the fourth (and thus penultimate) in the thread. Other columns (`context_[0-13]`) would be left empty.
 
 Once you have these in place, you can train the model using the following:
 
