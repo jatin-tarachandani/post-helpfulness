@@ -8,7 +8,7 @@ from datetime import datetime
 from keras import backend as K
 from keras.models import Sequential, Model
 from keras.layers import Input, Dense, Dropout, GRU, Lambda, concatenate
-from keras.layers.embeddings import Embedding
+from keras.layers import Embedding
 import keras.preprocessing as preprocessing
 import keras.layers as layers
 
