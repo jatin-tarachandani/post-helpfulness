@@ -20,6 +20,7 @@ from sklearn import model_selection
 import constants
 import utilities
 
+#this function 
 def get_sequences(tokenizer, data, max_len, field):
     x = tokenizer.texts_to_sequences(data[field].values.astype(str))
     seq = preprocessing.sequence.pad_sequences(x, maxlen=max_len)
@@ -42,7 +43,7 @@ def get_compiled_model(word_index, embedding_matrix, past_posts):
                           input_length=constants.MAX_LEN, mask_zero=True)
     gru2 = GRU(constants.NEURON_COUNT, return_sequences=False)
     __dropout__ = Dropout(constants.DROPOUT_RATE)
-
+    
     gru3 = GRU(constants.NEURON_COUNT, return_sequences=False)
     __dropout__ = Dropout(constants.DROPOUT_RATE)
 
@@ -109,12 +110,14 @@ def run(model_name):
     ids = data.postID.values.astype(str)
 
     tokenizer = preprocessing.text.Tokenizer(num_words=constants.VOCABULARY_SIZE)
+
+    #fits on all the text posts of the whole column
     tokenizer.fit_on_texts(list(data.postText.values.astype(str)))
     (word_index, embedding_matrix) = utilities.load_embedding(tokenizer, \
       constants.WORD_EMBEDDING_FILE, constants.DATA_DIM)
 
-    x = get_sequences(tokenizer, data, constants.MAX_LEN, 'postText')
-    x_op = get_sequences(tokenizer, data, constants.MAX_LEN, 'OPost')
+    x = get_sequences(tokenizer, data, constants.MAX_LEN, 'OPostText') #this was originally the target post, we change it to be the considered post's content
+    x_op = get_sequences(tokenizer, data, constants.MAX_LEN, 'OPost') # this should be the existing answers 
 
     #Prepare contextual data and train model for past context
     x_past = prepare_context(data, constants.PAST_POST_LENGTH, tokenizer)

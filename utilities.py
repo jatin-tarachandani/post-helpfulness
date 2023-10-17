@@ -75,6 +75,7 @@ def load_embedding(tokenizer, embedding_file, embedding_dim):
     embedding_matrix = np.zeros((len(word_index) + 1, embedding_dim))
     found = 0
     total = 0
+
     f = open('uncoveredWords.txt', 'w')
     for word, i in tqdm(word_index.items()):
         total += 1
